@@ -6,10 +6,6 @@
     # Better log
     lg = log --decorate --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cr)%Creset - %C(blue)%ae%Creset'
 
-    # Live status reports
-    livelog = "!while true; do clear; lines=$((`tput lines`-10)); if [[ -n $1 ]] ; then lines=$1; fi; git --no-pager lg | head -n $lines; sleep 1; done;" -
-    livestatus = "!while true; do clear; echo $PWD; git --no-pager status -sb; sleep 1; done;" -
-
     # Temporary ignore
     assume   = update-index --assume-unchanged
     unassume = update-index --no-assume-unchanged
@@ -33,9 +29,6 @@
 
     # List all the files currently being tracked
     list-files = "ls-tree --full-tree -r --name-only HEAD"
-
-    # Switch to work profile
-    workprofile = "config user.email 'mafields@ncsu.edu'"
 [color]
     ui = auto
 [push]
