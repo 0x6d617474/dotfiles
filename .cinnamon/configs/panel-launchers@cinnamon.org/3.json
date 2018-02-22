@@ -12,11 +12,12 @@
         ],
         "value": [
             "firefox.desktop",
+            "xfce4-terminal.desktop",
             "chromium.desktop",
             "org.gnome.Terminal.desktop",
-            "xfce4-terminal.desktop",
             "cinnamon-custom-launcher-1.desktop",
             "sublime_text.desktop",
+            "visual-studio-code.desktop",
             "xfce4-screenshooter.desktop"
         ]
     },
