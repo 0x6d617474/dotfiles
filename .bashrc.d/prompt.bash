@@ -101,7 +101,7 @@ __pre_prompt() {
                     PROMPT_DATA[6]="${dash}[${white}${bold}${chargestatus}${percentage}${reset}${pcolor}]"
                 fi
             fi
-        
+
 
         # Wifi
         if [[ -z $(ls /proc/net/wireless) ]]; then
@@ -214,9 +214,11 @@ prompt() {
     if [ -n "${SSH_CLIENT}" ] || [ -n "${SSH_TTY}" ]; then
       SESSION_TYPE="ssh"
     else
-      case $(ps -o comm= -p ${PPID}) in
-        sshd|*/sshd) SESSION_TYPE="ssh";;
-      esac
+      if [[ ${PPID} != 0 ]]; then
+        case $(ps -o comm= -p ${PPID}) in
+          sshd|*/sshd) SESSION_TYPE="ssh";;
+        esac
+      fi
     fi
 
     # Set the prompt color based on the current user and SSH status
