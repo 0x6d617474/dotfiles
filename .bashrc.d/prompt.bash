@@ -333,5 +333,9 @@ prompt() {
     esac
 }
 
-# Default to a fully featured prompt
-prompt on
+# Default to a fully featured prompt for graphical displays, simple for terminal
+if [[ "x${DISPLAY}" == "x" ]]; then
+  prompt simple
+else
+  prompt on
+fi
