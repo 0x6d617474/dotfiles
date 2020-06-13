@@ -1,4 +1,5 @@
-# If GPG_TTY is set, update it
-if [[ ${GPG_TTY} ]] ; then
+# If we're in an interactive terminal, update GPG_TTY
+if [[ -t 0 ]] ; then
     GPG_TTY=$(tty)
+    export GPG_TTY
 fi
