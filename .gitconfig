@@ -1,7 +1,7 @@
 [user]
     name = Matt Fields
     email = mafields@0x6d617474.net
-    signingKey = EE34E10C5224A05D
+    signingKey = 3EDB8EB38E1A394E
 [alias]
     # Better log
     lg = log --decorate --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cr)%Creset - %C(blue)%ae%Creset'
@@ -33,3 +33,7 @@
     ui = auto
 [push]
     default = matching
+[commit]
+    gpgsign = true
+[pull]
+    rebase = true
