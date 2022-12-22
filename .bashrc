@@ -17,7 +17,7 @@ shopt -s cmdhist                     # Put multiline commands onto one line in t
 unset -v MAILCHECK                   # Don't warn me about mail
 shopt -u mailwarn                    # Make sure mail warnings are off
 setterm -bfreq -blength 2>/dev/null  # Don't beep at me
-mesg n                               # Don't let anyone write(1) to me
+hash mesg 2>/dev/null && mesg n      # Don't let anyone write(1) to me
 
 # Various options
 force_color_prompt=yes               # Pretty colors

@@ -214,7 +214,7 @@ prompt() {
     if [ -n "${SSH_CLIENT}" ] || [ -n "${SSH_TTY}" ]; then
       SESSION_TYPE="ssh"
     else
-      if [[ ${PPID} != 0 ]]; then
+      if [ "${PPID}" != "0" ]; then
         case $(ps -o comm= -p ${PPID}) in
           sshd|*/sshd) SESSION_TYPE="ssh";;
         esac
@@ -241,6 +241,7 @@ prompt() {
     case $1 in
         # Full featured prompt
         on)
+            PROMPT_SIMPLE=0
             PROMPT_COLOR_DATA=("${color_data[@]}")
             PROMPT_SYMBOL_DATA=("${symbol_data[@]}")
             PROMPT_PRIMARY_COLOR=${primary_color}
@@ -282,6 +283,7 @@ prompt() {
 
         # Simpler, but still pretty prompt
         simple)
+            PROMPT_SIMPLE=1
             PROMPT_COLOR_DATA=("${color_data[@]}")
             PROMPT_SYMBOL_DATA=("${symbol_data[@]}")
             PROMPT_PRIMARY_COLOR=${primary_color}
@@ -318,6 +320,7 @@ prompt() {
 
         # Revert to simple inexpensive prompt
         off)
+            PROMPT_SIMPLE=1
             unset -v PROMPT_COMMAND PROMPT_DIRTRIM PROMPT_RETURN 
             unset -v PROMPT_COLOR_DATA PROMPT_SYMBOL_DATA PROMPT_PRIMARY_COLOR
             PS1="${color_data[0]}\n\$ "
@@ -333,9 +336,5 @@ prompt() {
     esac
 }
 
-# Default to a fully featured prompt for graphical displays, simple for terminal
-if [[ "x${DISPLAY}" == "x" ]]; then
-  prompt simple
-else
-  prompt on
-fi
+# Default to a fully featured prompt
+prompt on

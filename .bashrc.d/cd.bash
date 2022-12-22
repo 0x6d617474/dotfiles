@@ -14,6 +14,9 @@ __cd() {
                 shift
                 break
                 ;;
+            -)
+                break
+                ;;
             -*)
                 shift
                 opts=("${opts[@]}" "$arg")

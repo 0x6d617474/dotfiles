@@ -28,7 +28,13 @@
     theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
 
     # List all the files currently being tracked
-    list-files = "ls-tree --full-tree -r --name-only HEAD"
+    list-files = "ls-tree --full-tree -r --name-only"
+
+    # List files in a commit
+    show-files = "diff-tree --no-commit-id --name-only -r"
+
+    # Clean up branches
+    branch-prune = "!git branch -v | grep '\\[gone]' | awk '{print $1}' | xargs -r git branch -D"
 [color]
     ui = auto
 [push]
