@@ -104,7 +104,7 @@ __pre_prompt() {
 
 
         # Wifi
-        if [[ -z $(ls /proc/net/wireless) ]]; then
+        if [[ -z $(ls /proc/net/wireless 2>/dev/null) ]]; then
             PROMPT_DATA[7]=""
         else
             local interface=$(cat /proc/net/wireless | tail -n 1 | awk '{print $1}' | rev | cut -c 2- | rev)
